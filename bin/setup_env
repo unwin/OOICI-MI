@@ -1,0 +1,56 @@
+#!/bin/bash
+
+echo "Step 1 download source to ioncore-python version v1.1.0"
+git clone git://github.com/ooici/ioncore-python.git
+cd ioncore-python/
+git checkout v1.1.0
+echo "Available Versions"
+git tag
+git status
+
+ant clean
+
+# git clone git://github.com/ooici/ioncore-python.git
+
+#
+# Need to remove old virtual-env, then re-create it.
+# Should be rm -rf ioncore-python-DEV-KIT
+#
+
+
+echo "Step 2 install virtualenv"
+echo "Executing the following command: sudo easy_install virtualenv"
+echo "(please enter your sudo password)"
+sudo easy_install virtualenv
+sudo easy_install virtualenvwrapper
+
+
+echo "Step 3 setup environment"
+#
+# Need to verify that python 2.5 is installed. what if it isn't?
+#
+echo "Testing that python version 2.5 is installed..."
+
+hash python2.5 2>&- || (echo >&2 "I require python2.5, but it's not installed.  Aborting."; exit 1;)
+echo "here"
+virtualenv --no-site-packages --python=`which python2.5` ioncore-python-DEV-KIT
+. ioncore-python-DEV-KIT/bin/activate
+
+easy_install python-subunit
+easy_install junitxml
+
+python bootstrap.py
+
+bin/buildout -c development.cfg
+
+echo "Step 4 trial testing..."
+
+bin/trial  ion 
+echo "you should see something resembling:"
+echo "PASSED (skips=16, successes=646)"
+
+#
+# Should print out that the above should show results similar to...
+#
+
+
