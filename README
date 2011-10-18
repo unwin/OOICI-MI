@@ -1,0 +1,5 @@
+This is the OOICI Instrument Development Kit.  
+
+Contained within it is 
+bin/sim_net   : lets you simulate 2 types of satellite networking. (remember to use it to turn off teh simulation when done)
+bin/setup_env : Fetches and installs the OOICI ioncore-python and supporting software. Requires python 2.5 to be installed prior.
