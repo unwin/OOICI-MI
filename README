@@ -6,4 +6,11 @@ This is the OOICI Instrument Development Kit.
 
 Contained within it is 
 bin/sim_net   : lets you simulate 2 types of satellite networking. (Remember to use it to turn off the simulation when done)
+
+To observe what the script does do:
+
+	sim_net sat_rough google.com
+	ping -c 100 google.com
+	sim_net off google.com
+
 bin/setup_env : Fetches and installs the OOICI ioncore-python and supporting software. Requires python 2.5 to be installed prior.

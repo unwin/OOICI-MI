@@ -1,0 +1,20 @@
+#!/bin/bash
+
+DIR="$( cd "$( dirname "$0" )" && pwd )"
+
+
+#
+# kill twistd
+#
+pushd $DIR/../ioncore-python
+kill -9 `cat twistd.pid`
+popd
+
+#
+# stop the server
+#
+pushd $DIR/../rabbitmq_server-2.3.1
+sudo sbin/rabbitmqctl stop
+popd
+
+# notes for when casandra config is needed https://confluence.oceanobservatories.org/display/EPEDev/ION+R1+Setup+for+EPE

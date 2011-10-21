@@ -39,6 +39,24 @@ virtualenv --no-site-packages --python=`which python2.5` ioncore-python-DEV-KIT
 easy_install python-subunit
 easy_install junitxml
 
+echo "Installing Rabbitmq"
+wget http://www.rabbitmq.com/releases/rabbitmq-server/v2.3.1/rabbitmq-server-generic-unix-2.3.1.tar.gz
+tar -xvzf rabbitmq-server-generic-unix-2.3.1.tar.gz
+#cd rabbitmq_server-2.3.1/
+#
+# . rabbitmq.conf
+# sets the NODENAME to instrument
+# Start RabbitMQ Server "sudo ./sbin/rabbitmq-server -detached"
+#
+#
+# To shut it down "sudo ./sbin/rabbitmq-ctl"
+#
+#
+
+
+
+
+
 python bootstrap.py
 
 bin/buildout -c development.cfg

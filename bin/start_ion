@@ -1,0 +1,40 @@
+#!/bin/bash
+
+DIR="$( cd "$( dirname "$0" )" && pwd )"
+
+
+# Lets use our favorite virtual environment
+echo "Start the virtual environment"
+echo . $DIR/../ioncore-python/ioncore-python-DEV-KIT/bin/activate
+. $DIR/../ioncore-python/ioncore-python-DEV-KIT/bin/activate
+
+pushd $DIR/../rabbitmq_server-2.3.1
+
+NODENAME=instrument
+
+# Start the rabbitmq server
+sudo sbin/rabbitmq-server -detached
+
+sleep 30
+
+# DO NOT Delete the user guest
+
+# List users
+sudo sbin/rabbitmqctl list_users
+
+# DO NOT Add user 
+# sudo sbin/rabbitmqctl add_user inst inst
+
+# And list users just to make sure we have what we expect
+# sudo sbin/rabbitmqctl list_users
+
+popd
+
+# HAVE to be in ioncore-python or everything breaks...
+
+pushd $DIR/../ioncore-python
+
+bin/twistd cc -n -a sysname=instrument -h localhost res/deploy/r1deploy.rel
+
+popd
+
