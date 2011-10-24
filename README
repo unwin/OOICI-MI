@@ -14,3 +14,5 @@ To observe what the script does do:
 	sim_net off google.com
 
 bin/setup_env : Fetches and installs the OOICI ioncore-python and supporting software. Requires python 2.5 to be installed prior.
+Tested to work with XCode developter tools from http://connect.apple.com/cgi-bin/WebObjects/MemberSite.woa/wa/getSoftware?bundleID=20792
+
