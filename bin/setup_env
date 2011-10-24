@@ -4,6 +4,10 @@ DIR="$( cd "$( dirname "$0" )" && pwd )"
 
 pushd $DIR/..
 
+echo "Installing Rabbitmq"
+curl -L  http://www.rabbitmq.com/releases/rabbitmq-server/v2.3.1/rabbitmq-server-generic-unix-2.3.1.tar.gz > rabbitmq-server-generic-unix-2.3.1.tar.gz
+tar -xvzf rabbitmq-server-generic-unix-2.3.1.tar.gz
+
 echo "Step 1 download source to ioncore-python version v1.1.0"
 git clone git://github.com/ooici/ioncore-python.git
 cd ioncore-python/
@@ -46,9 +50,6 @@ virtualenv --no-site-packages --python=`which python2.5` ioncore-python-DEV-KIT
 easy_install python-subunit
 easy_install junitxml
 
-echo "Installing Rabbitmq"
-curl -L  http://www.rabbitmq.com/releases/rabbitmq-server/v2.3.1/rabbitmq-server-generic-unix-2.3.1.tar.gz > rabbitmq-server-generic-unix-2.3.1.tar.gz
-tar -xvzf rabbitmq-server-generic-unix-2.3.1.tar.gz
 
 #
 # Does local rebbit need to be running for trial?
