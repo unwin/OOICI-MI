@@ -1,0 +1,7 @@
+#!/bin/bash
+
+DIR="$( cd "$( dirname "$0" )" && pwd )"
+
+pushd $DIR/..
+rm ioncore-python/res/config/ionlocal.config
+popd
