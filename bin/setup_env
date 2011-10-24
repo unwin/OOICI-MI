@@ -62,7 +62,7 @@ echo "Step 4 trial testing..."
 
 bin/trial  ion 
 echo "you should see something resembling:"
-echo "PASSED (skips=16, successes=646)"
+echo "FAILED (skips=13, failures=1, errors=227, successes=424)"
 
 #
 # Should print out that the above should show results similar to...
